@@ -10,7 +10,12 @@
 
 
 @interface BigLetterView : NSView {
-
+#pragma mark Instance variables
+    NSColor *bgColor;
+    NSString *string;
 }
+#pragma mark Accessors
+@property (readwrite, retain) NSColor *bgColor;
+@property (readwrite, copy) NSString *string;
 
 @end
