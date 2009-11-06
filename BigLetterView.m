@@ -60,7 +60,7 @@
 - (void)drawRect:(NSRect)dirtyRect {
     
     if (isHighlighted) {
-        bgColor = [[NSColor blueColor] retain];
+        bgColor = [[NSColor orangeColor] retain];
     }
     else {
         bgColor = [[NSColor yellowColor] retain];
@@ -72,10 +72,12 @@
     [NSBezierPath fillRect:bounds];
     
     // Am I the window's first responder?
-    if ([[self window] firstResponder] == self) {
-        [[NSColor keyboardFocusIndicatorColor] set];
-        [NSBezierPath setDefaultLineWidth:4.0];
-        [NSBezierPath strokeRect:bounds];
+    if (([[self window] firstResponder] == self) &&
+                [NSGraphicsContext currentContextDrawingToScreen]) {
+        [NSGraphicsContext saveGraphicsState];
+        NSSetFocusRingStyle(NSFocusRingOnly);
+        [NSBezierPath fillRect:bounds];
+        [NSGraphicsContext restoreGraphicsState];
     }
 }
 
@@ -116,6 +118,7 @@
 
 - (BOOL)resignFirstResponder {
     DLog(@"resigning First Responder");
+    [self setKeyboardFocusRingNeedsDisplayInRect:[self bounds]];
     [self setNeedsDisplay:YES];
     return YES;
 }
