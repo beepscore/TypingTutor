@@ -34,6 +34,8 @@
     DLog(@"The string is now %@", string);
 }
 
+@synthesize isHighlighted;
+
 #pragma mark -
 - (void)dealloc{
     self.bgColor = nil;
@@ -57,6 +59,14 @@
 #pragma mark Drawimg methods
 - (void)drawRect:(NSRect)dirtyRect {
     
+    if (isHighlighted) {
+        bgColor = [[NSColor blueColor] retain];
+    }
+    else {
+        bgColor = [[NSColor yellowColor] retain];
+    }         
+
+    
     NSRect bounds = [self bounds];
     [bgColor set];
     [NSBezierPath fillRect:bounds];
@@ -71,6 +81,31 @@
 
 - (BOOL)isOpaque{
     return YES;
+}
+
+#pragma mark Rollover methods
+// Ref Hillegass pg 274
+- (void)viewDidMoveToWindow {
+    int options = NSTrackingMouseEnteredAndExited |
+    NSTrackingActiveAlways |
+    NSTrackingInVisibleRect;
+    NSTrackingArea *ta;
+    ta = [[NSTrackingArea alloc] initWithRect:NSZeroRect
+                                      options:options
+                                        owner:self
+                                     userInfo:nil];
+    [self addTrackingArea:ta];
+    [ta release];
+}
+
+- (void)mouseEntered:(NSEvent *)theEvent {
+    isHighlighted = YES;
+    [self setNeedsDisplay:YES];
+}
+
+- (void)mouseExited:(NSEvent *)theEvent {
+    isHighlighted = NO;
+    [self setNeedsDisplay:YES];
 }
 
 #pragma mark First Respoder methods

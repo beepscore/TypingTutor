@@ -13,9 +13,11 @@
 #pragma mark Instance variables
     NSColor *bgColor;
     NSString *string;
+    BOOL isHighlighted;
 }
 #pragma mark Accessors
 @property (readwrite, retain) NSColor *bgColor;
 @property (readwrite, copy) NSString *string;
+@property (readwrite) BOOL isHighlighted;
 
 @end
