@@ -24,6 +24,6 @@
 
 - (void)prepareAttributes;
 - (void)drawStringCenteredIn:(NSRect)rect;
-
+- (IBAction)savePDF:(id)sender;
 
 @end

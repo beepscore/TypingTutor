@@ -174,4 +174,37 @@
                    forKey:NSForegroundColorAttributeName];
 }
 
+- (IBAction)savePDF:(id)sender {
+    NSSavePanel *panel = [NSSavePanel savePanel];
+    [panel setRequiredFileType:@"pdf"];
+    [panel beginSheetForDirectory:nil
+                             file:nil
+                   modalForWindow:[self window]
+                    modalDelegate:self
+                   didEndSelector:@selector(didEnd:returnCode:contextInfo:)
+                      contextInfo:NULL];
+}
+
+- (void)didEnd:(NSSavePanel *)sheet
+    returnCode:(int)code
+   contextInfo:(void *)contextInfo {
+    
+    if (code != NSOKButton) {
+        return;
+    }
+    
+    NSRect rect = [self bounds];
+    NSData *data = [self dataWithPDFInsideRect:rect];
+    NSString *path = [sheet filename];
+    NSError *error;
+    BOOL successful = [data writeToFile:path
+                                options:0
+                                  error:&error];
+    
+    if (!successful){
+        NSAlert *alert = [NSAlert alertWithError:error];
+        [alert runModal];
+    }
+}
+
 @end
