@@ -14,10 +14,16 @@
     NSColor *bgColor;
     NSString *string;
     BOOL isHighlighted;
+    NSMutableDictionary *attributes;
 }
 #pragma mark Accessors
 @property (readwrite, retain) NSColor *bgColor;
 @property (readwrite, copy) NSString *string;
 @property (readwrite) BOOL isHighlighted;
+@property (nonatomic, retain) NSMutableDictionary *attributes;
+
+- (void)prepareAttributes;
+- (void)drawStringCenteredIn:(NSRect)rect;
+
 
 @end

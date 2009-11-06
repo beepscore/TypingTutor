@@ -31,15 +31,18 @@
     c = [c copy];
     [string release];
     string = c;
-    DLog(@"The string is now %@", string);
+    DLog(@"The string: %@", string);
+    [self setNeedsDisplay:YES];
 }
 
 @synthesize isHighlighted;
+@synthesize attributes;
 
 #pragma mark -
 - (void)dealloc{
     self.bgColor = nil;
     self.string = nil;
+    self.attributes = nil;
     [super dealloc];
 }
 
@@ -50,6 +53,7 @@
     if (self) {
         
         DLog(@"initializing view");
+        [self prepareAttributes];
         bgColor = [[NSColor yellowColor] retain];
         string = @" ";
     }
@@ -70,6 +74,7 @@
     NSRect bounds = [self bounds];
     [bgColor set];
     [NSBezierPath fillRect:bounds];
+    [self drawStringCenteredIn:bounds];
     
     // Am I the window's first responder?
     if (([[self window] firstResponder] == self) &&
@@ -83,6 +88,14 @@
 
 - (BOOL)isOpaque{
     return YES;
+}
+
+- (void)drawStringCenteredIn:(NSRect)rect {
+    NSSize strSize = [string sizeWithAttributes:attributes];
+    NSPoint strOrigin;
+    strOrigin.x = rect.origin.x + ((rect.size.width - strSize.width)/2);
+    strOrigin.y = rect.origin.y + ((rect.size.height - strSize.height)/2);
+    [string drawAtPoint:strOrigin withAttributes:attributes];    
 }
 
 #pragma mark Rollover methods
@@ -150,6 +163,15 @@
 
 - (void)deleteBackward:(id)sender {
     [self setString:@" "];
+}
+
+#pragma mark Text methods
+- (void)prepareAttributes {
+    attributes = [[NSMutableDictionary alloc] init];
+    [attributes setObject:[NSFont fontWithName:@"Helvetica" size:75]
+                   forKey:NSFontAttributeName];
+    [attributes setObject:[NSColor redColor]
+                   forKey:NSForegroundColorAttributeName];
 }
 
 @end
