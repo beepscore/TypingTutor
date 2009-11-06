@@ -14,12 +14,14 @@
     NSColor *bgColor;
     NSString *string;
     BOOL isHighlighted;
+    NSShadow *myShadow;
     NSMutableDictionary *attributes;
 }
 #pragma mark Accessors
 @property (readwrite, retain) NSColor *bgColor;
 @property (readwrite, copy) NSString *string;
 @property (readwrite) BOOL isHighlighted;
+@property (nonatomic, retain) NSShadow *myShadow;
 @property (nonatomic, retain) NSMutableDictionary *attributes;
 
 - (void)prepareAttributes;

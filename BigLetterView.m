@@ -36,6 +36,7 @@
 }
 
 @synthesize isHighlighted;
+@synthesize myShadow;
 @synthesize attributes;
 
 #pragma mark -
@@ -43,6 +44,7 @@
     self.bgColor = nil;
     self.string = nil;
     self.attributes = nil;
+    self.myShadow = nil;
     [super dealloc];
 }
 
@@ -53,6 +55,8 @@
     if (self) {
         
         DLog(@"initializing view");
+        // must instantiate myShadow before prepareAttributes with it
+        myShadow = [[NSShadow alloc] init];
         [self prepareAttributes];
         bgColor = [[NSColor yellowColor] retain];
         string = @" ";
@@ -172,7 +176,15 @@
                    forKey:NSFontAttributeName];
     [attributes setObject:[NSColor redColor]
                    forKey:NSForegroundColorAttributeName];
+    
+    [myShadow setShadowOffset:NSMakeSize(4, -4)];
+    [myShadow setShadowBlurRadius:3.0];
+    [myShadow setShadowColor:[NSColor blackColor]];
+    // NSShadowAttributeName is a standard attribute key.
+    [attributes setObject:myShadow
+                   forKey:NSShadowAttributeName];
 }
+
 
 - (IBAction)savePDF:(id)sender {
     NSSavePanel *panel = [NSSavePanel savePanel];
