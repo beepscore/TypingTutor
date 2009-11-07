@@ -13,6 +13,7 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		DE071A9D10A3ED2B00137F40 /* BSGlobalValues.m in Sources */ = {isa = PBXBuildFile; fileRef = DE071A9C10A3ED2B00137F40 /* BSGlobalValues.m */; };
 		DE5C99A110A3E67A000E5B53 /* BigLetterView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5C99A010A3E67A000E5B53 /* BigLetterView.m */; };
+		DEF3AF9610A4F1FC00B88D15 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF3AF9510A4F1FC00B88D15 /* AppController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,8 @@
 		DE071A9C10A3ED2B00137F40 /* BSGlobalValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSGlobalValues.m; sourceTree = "<group>"; };
 		DE5C999F10A3E67A000E5B53 /* BigLetterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigLetterView.h; sourceTree = "<group>"; };
 		DE5C99A010A3E67A000E5B53 /* BigLetterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigLetterView.m; sourceTree = "<group>"; };
+		DEF3AF9410A4F1FC00B88D15 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
+		DEF3AF9510A4F1FC00B88D15 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +50,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DEF3AF9410A4F1FC00B88D15 /* AppController.h */,
+				DEF3AF9510A4F1FC00B88D15 /* AppController.m */,
 				DE071A9B10A3ED1C00137F40 /* BSGlobalValues.h */,
 				DE071A9C10A3ED2B00137F40 /* BSGlobalValues.m */,
 				DE5C999F10A3E67A000E5B53 /* BigLetterView.h */,
@@ -179,6 +184,7 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				DE5C99A110A3E67A000E5B53 /* BigLetterView.m in Sources */,
 				DE071A9D10A3ED2B00137F40 /* BSGlobalValues.m in Sources */,
+				DEF3AF9610A4F1FC00B88D15 /* AppController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
