@@ -16,6 +16,7 @@
 #pragma mark Outlets
     IBOutlet BigLetterView *inLetterView;
     IBOutlet BigLetterView *outLetterView;
+    IBOutlet NSWindow *speedSheet;
     
     // Data
     NSArray *letters;
@@ -24,8 +25,11 @@
     // Time
     NSTimer *timer;
     int count;
+    int stepSize;
 }
 - (IBAction)stopGo:(id)sender;
+- (IBAction)showSpeedSheet:(id)sender;
+- (IBAction)endSpeedSheet:(id)sender;
 - (void)incrementCount;
 - (void)resetCount;
 - (void)showAnotherLetter;

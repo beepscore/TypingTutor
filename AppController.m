@@ -24,6 +24,7 @@
         
         // Seed the random number generator
         srandom(time(NULL));
+        stepSize = 5;
     }
     return self;
 }
@@ -32,6 +33,7 @@
     [self showAnotherLetter];
 }
 
+#pragma mark IBActions
 - (IBAction)stopGo:(id)sender {
     
     if (nil == timer) {
@@ -53,13 +55,31 @@
     }
 }
 
+- (IBAction)showSpeedSheet:(id)sender {
+    
+    [NSApp beginSheet:speedSheet
+       modalForWindow:[inLetterView window]
+        modalDelegate:nil
+       didEndSelector:NULL
+          contextInfo:NULL];
+}
+
+- (IBAction)endSpeedSheet:(id)sender {
+    
+    // Return to normal event handling
+    [NSApp endSheet:speedSheet];
+    
+    // Hide the sheet
+    [speedSheet orderOut:sender];
+}
+
+
 - (void)checkThem:(NSTimer *)aTimer {
     
     if ([[inLetterView string] isEqual:[outLetterView string]]) {
         [self showAnotherLetter];
     }
     if (MAX_COUNT == count) {
-        NSBeep();
         [self resetCount];
     }
     else {
@@ -69,11 +89,17 @@
 
 - (void)incrementCount {
     [self willChangeValueForKey:BSCountKey];
-     count = count + COUNT_STEP;
-     if (count > MAX_COUNT) {
-         count = MAX_COUNT;
-     }
-     [self didChangeValueForKey:BSCountKey];
+    count = count + stepSize;
+    
+    // Play sound like a metronome
+    if (count % 50 == 0) {
+        NSBeep();
+    }
+    
+    if (count > MAX_COUNT) {
+        count = MAX_COUNT;
+    }
+    [self didChangeValueForKey:BSCountKey];
 }
 
 - (void)resetCount {

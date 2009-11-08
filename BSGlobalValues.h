@@ -11,7 +11,6 @@
 
 
 #define MAX_COUNT (100)
-#define COUNT_STEP (5)
 
 extern NSString * const BSCountKey;
 
