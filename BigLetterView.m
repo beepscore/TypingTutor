@@ -69,6 +69,8 @@
         [self prepareAttributes];
         bgColor = [[NSColor yellowColor] retain];
         string = @" ";
+        [self registerForDraggedTypes:
+         [NSArray arrayWithObject:NSStringPboardType]];
     }
     return self;
 }
@@ -76,17 +78,20 @@
 #pragma mark Drawimg methods
 - (void)drawRect:(NSRect)dirtyRect {
     
+    NSRect bounds = [self bounds];
+    
     if (isHighlighted) {
-        bgColor = [[NSColor orangeColor] retain];
+        NSGradient *gr;
+        gr = [[NSGradient alloc] initWithStartingColor:[NSColor whiteColor] 
+                                           endingColor:bgColor];
+        [gr drawInRect:bounds relativeCenterPosition:NSZeroPoint];
+        [gr release];
     }
     else {
-        bgColor = [[NSColor yellowColor] retain];
+        [bgColor set];
+        [NSBezierPath fillRect:bounds];
     }         
-
     
-    NSRect bounds = [self bounds];
-    [bgColor set];
-    [NSBezierPath fillRect:bounds];
     [self drawStringCenteredIn:bounds];
     
     // Am I the window's first responder?
