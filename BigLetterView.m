@@ -131,16 +131,6 @@
     [ta release];
 }
 
-- (void)mouseEntered:(NSEvent *)theEvent {
-    isHighlighted = YES;
-    [self setNeedsDisplay:YES];
-}
-
-- (void)mouseExited:(NSEvent *)theEvent {
-    isHighlighted = NO;
-    [self setNeedsDisplay:YES];
-}
-
 #pragma mark First Respoder methods
 - (BOOL)acceptsFirstResponder {
     DLog(@"accepting First Responder");
@@ -336,6 +326,41 @@
     if (operation == NSDragOperationDelete) {
         [self setString:@""];
     }
+}
+
+- (NSDragOperation) draggingEntered:(id <NSDraggingInfo>)sender {
+    DLog(@"draggingEntered:");
+    if ([sender draggingSource] == self) {
+        return NSDragOperationNone;
+    }
+    isHighlighted = YES;
+    [self setNeedsDisplay:YES];
+    return NSDragOperationCopy;
+}
+
+- (void)draggingExited:(id <NSDraggingInfo>)sender {
+    DLog(@"draggingExited:");
+    isHighlighted = NO;
+    [self setNeedsDisplay:YES];
+}
+
+- (BOOL)prepareForDragOperation:(id <NSDraggingInfo>)sender {
+    return YES;
+}
+
+- (BOOL)performDragOperation:(id <NSDraggingInfo>)sender {
+    NSPasteboard *pb = [sender draggingPasteboard];
+    if (![self readFromPasteboard:pb]) {
+        DLog(@"Error: Could not read from dragging pasteboard");
+        return NO;
+    }
+    return YES;
+}
+
+- (void)concludeDragOperation:(id <NSDraggingInfo>)sender {
+    DLog(@"concludeDragOperation:");
+    isHighlighted = NO;
+    [self setNeedsDisplay:YES];
 }
 
 @end
