@@ -8,7 +8,7 @@
 #import "BSGlobalValues.h"
 
 
-//NSString * const BSPersonNameKey = @"name";
+NSString * const BSCountKey = @"count";
 
 
 

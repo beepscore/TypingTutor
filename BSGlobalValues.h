@@ -10,7 +10,10 @@
 // Ref http://www.cocoadev.com/index.pl?GlobalVariablesInCocoa
 
 
-//extern NSString * const BNRColorChangedNotification;
+#define MAX_COUNT (100)
+#define COUNT_STEP (5)
+
+extern NSString * const BSCountKey;
 
 #pragma mark -
 // Ref http://iphoneincubator.com/blog/debugging/the-evolution-of-a-replacement-for-nslog

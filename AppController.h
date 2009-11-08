@@ -13,8 +13,19 @@
 
 @interface AppController : NSObject {
 #pragma mark Outlets
+    IBOutlet BigLetterView *inLetterView;
+    IBOutlet BigLetterView *outLetterView;
     
-
+    // Data
+    NSArray *letters;
+    int lastIndex;
+    
+    // Time
+    NSTimer *timer;
+    int count;
 }
-
+- (IBAction)stopGo:(id)sender;
+- (void)incrementCount;
+- (void)resetCount;
+- (void)showAnotherLetter;
 @end
