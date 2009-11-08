@@ -16,6 +16,7 @@
     BOOL isHighlighted;
     NSShadow *myShadow;
     NSMutableDictionary *attributes;
+    NSEvent *mouseDownEvent;
 }
 #pragma mark Accessors
 @property (readwrite, retain) NSColor *bgColor;
