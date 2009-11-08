@@ -1,7 +1,7 @@
 //
 //  AppController.h
 //  TypingTutor
-//  Ref Hillegass Ch 19, 20, 21, 22, 23, 24, 25
+//  Ref Hillegass Ch 19, 20, 21, 22, 23, 24, 25, 26
 //
 //  Created by Steve Baker on 11/6/09.
 //  Copyright 2009 Beepscore LLC. All rights reserved.
