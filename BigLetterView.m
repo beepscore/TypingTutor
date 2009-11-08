@@ -344,6 +344,15 @@
     [self setNeedsDisplay:YES];
 }
 
+- (NSDragOperation)draggingUpdated:(id <NSDraggingInfo>)sender {
+    NSDragOperation op = [sender draggingSourceOperationMask];
+    DLog(@"operation mask = %d", op);
+    if ([sender draggingSource] == self) {
+        return NSDragOperationNone;
+    }
+    return NSDragOperationCopy;
+}
+
 - (BOOL)prepareForDragOperation:(id <NSDraggingInfo>)sender {
     return YES;
 }
