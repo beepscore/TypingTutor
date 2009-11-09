@@ -116,23 +116,58 @@
     }
 }
 
-- (BOOL)isPartialStringValid:(NSString *)partialString
-            newEditingString:(NSString **)newString
+// Ref Hillegass pg 336 - replace this method
+//- (BOOL)isPartialStringValid:(NSString *)partialString
+//            newEditingString:(NSString **)newString
+//            errorDescription:(NSString **)error {
+//    
+//    // Zero length strings are OK
+//    if (0 == [partialString length]) {
+//        return YES;
+//    }
+//    NSString *match = [self firstColorKeyForPartialString:partialString];
+//    if (match) {
+//        return YES;
+//    } else {
+//        if (error) {
+//            *error = @"No such color";
+//            DLog(@"%@", *error);
+//        }
+//        return NO;
+//    }
+//}
+
+- (BOOL)isPartialStringValid:(NSString **)partialStringPtr
+       proposedSelectedRange:(NSRangePointer)proposedSelRangePtr
+              originalString:(NSString *)origString 
+       originalSelectedRange:(NSRange)origSelRange 
             errorDescription:(NSString **)error {
     
     // Zero length strings are OK
-    if (0 == [partialString length]) {
+    if (0 == [*partialStringPtr length]) {
         return YES;
     }
-    NSString *match = [self firstColorKeyForPartialString:partialString];
-    if (match) {
-        return YES;
-    } else {
-        if (error) {
-            *error = @"No such color";
-            DLog(@"%@", *error);
-        }
+    NSString *match = [self firstColorKeyForPartialString:*partialStringPtr];
+    
+    // No color match?
+    if (!match) {
         return NO;
     }
+    
+    // If this would not move the beginning of the selection, it is a delete.
+    if (origSelRange.location == proposedSelRangePtr->location) {
+        return YES;
+    }
+    
+    // If the partial string is shorter than the match,
+    // provide the match and set the selection
+    if ([match length] != [*partialStringPtr length]) {
+        proposedSelRangePtr->location = [*partialStringPtr length];
+        proposedSelRangePtr->length = [match length] 
+        - proposedSelRangePtr->location;
+        *partialStringPtr = match;
+        return NO;
+    }
+    return YES;
 }
 @end
