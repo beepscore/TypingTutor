@@ -14,6 +14,7 @@
 		DE071A9D10A3ED2B00137F40 /* BSGlobalValues.m in Sources */ = {isa = PBXBuildFile; fileRef = DE071A9C10A3ED2B00137F40 /* BSGlobalValues.m */; };
 		DE5C99A110A3E67A000E5B53 /* BigLetterView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5C99A010A3E67A000E5B53 /* BigLetterView.m */; };
 		DE76AA5010A53BFB00631C01 /* FirstLetter.m in Sources */ = {isa = PBXBuildFile; fileRef = DE76AA4F10A53BFB00631C01 /* FirstLetter.m */; };
+		DEA2DF4710A7749F00A3E04E /* ColorFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA2DF4610A7749F00A3E04E /* ColorFormatter.m */; };
 		DEF3AF9610A4F1FC00B88D15 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF3AF9510A4F1FC00B88D15 /* AppController.m */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,8 @@
 		DE5C99A010A3E67A000E5B53 /* BigLetterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigLetterView.m; sourceTree = "<group>"; };
 		DE76AA4E10A53BFB00631C01 /* FirstLetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstLetter.h; sourceTree = "<group>"; };
 		DE76AA4F10A53BFB00631C01 /* FirstLetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstLetter.m; sourceTree = "<group>"; };
+		DEA2DF4510A7749F00A3E04E /* ColorFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorFormatter.h; sourceTree = "<group>"; };
+		DEA2DF4610A7749F00A3E04E /* ColorFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorFormatter.m; sourceTree = "<group>"; };
 		DEF3AF9410A4F1FC00B88D15 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		DEF3AF9510A4F1FC00B88D15 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -59,6 +62,8 @@
 				DE071A9C10A3ED2B00137F40 /* BSGlobalValues.m */,
 				DE5C999F10A3E67A000E5B53 /* BigLetterView.h */,
 				DE5C99A010A3E67A000E5B53 /* BigLetterView.m */,
+				DEA2DF4510A7749F00A3E04E /* ColorFormatter.h */,
+				DEA2DF4610A7749F00A3E04E /* ColorFormatter.m */,
 				DE76AA4E10A53BFB00631C01 /* FirstLetter.h */,
 				DE76AA4F10A53BFB00631C01 /* FirstLetter.m */,
 			);
@@ -191,6 +196,7 @@
 				DE071A9D10A3ED2B00137F40 /* BSGlobalValues.m in Sources */,
 				DEF3AF9610A4F1FC00B88D15 /* AppController.m in Sources */,
 				DE76AA5010A53BFB00631C01 /* FirstLetter.m in Sources */,
+				DEA2DF4710A7749F00A3E04E /* ColorFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
