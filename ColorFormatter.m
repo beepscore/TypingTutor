@@ -7,7 +7,7 @@
 //
 
 #import "ColorFormatter.h"
-
+#import "BSGlobalValues.h"
 
 #pragma mark Private methods
 // Ref Hillegass Ch 22 pg 297
@@ -111,6 +111,26 @@
         if (errorString != NULL) {
             *errorString = [NSString stringWithFormat:
                             @"'%@' is not a color", string];
+        }
+        return NO;
+    }
+}
+
+- (BOOL)isPartialStringValid:(NSString *)partialString
+            newEditingString:(NSString **)newString
+            errorDescription:(NSString **)error {
+    
+    // Zero length strings are OK
+    if (0 == [partialString length]) {
+        return YES;
+    }
+    NSString *match = [self firstColorKeyForPartialString:partialString];
+    if (match) {
+        return YES;
+    } else {
+        if (error) {
+            *error = @"No such color";
+            DLog(@"%@", *error);
         }
         return NO;
     }
