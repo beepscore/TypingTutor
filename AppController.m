@@ -122,5 +122,13 @@
     [self resetCount];
 }
 
+- (BOOL)control:(NSControl *)control
+    didFailToFormatString:(NSString *)string
+         errorDescription:(NSString *)error {
+    
+    DLog(@"AppController told that formatting of %@ failed: %@", 
+         string, error);
+    return NO;
+}
 
 @end
