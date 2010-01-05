@@ -50,10 +50,10 @@
 
 #pragma mark -
 - (void)dealloc{
-    self.bgColor = nil;
-    self.string = nil;
-    self.attributes = nil;
-    self.myShadow = nil;
+    [bgColor release], bgColor = nil;
+    [string release], string = nil;
+    [attributes release], attributes = nil;
+    [myShadow release], myShadow = nil;
     [super dealloc];
 }
 

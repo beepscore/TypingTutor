@@ -26,7 +26,7 @@
 }
 
 - (void)dealloc {
-    [colorList release];
+    [colorList release], colorList = nil;
     [super dealloc];
 }
 
