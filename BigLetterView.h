@@ -22,7 +22,7 @@
 @property (readwrite, copy) NSString *string;
 @property (readwrite) BOOL isHighlighted;
 @property (nonatomic, retain) NSShadow *myShadow;
-@property (nonatomic, retain) NSMutableDictionary *attributes;
+@property (nonatomic, copy) NSMutableDictionary *attributes;
 
 - (void)prepareAttributes;
 - (void)drawStringCenteredIn:(NSRect)rect;
