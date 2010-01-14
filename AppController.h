@@ -20,12 +20,12 @@
     
     // Data
     NSArray *letters;
-    int lastIndex;
+    NSUInteger lastIndex;
     
     // Time
     NSTimer *timer;
-    int count;
-    int stepSize;
+    NSUInteger count;
+    NSUInteger stepSize;
 }
 - (IBAction)stopGo:(id)sender;
 - (IBAction)showSpeedSheet:(id)sender;

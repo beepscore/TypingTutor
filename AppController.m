@@ -111,7 +111,7 @@
 - (void)showAnotherLetter {
     
     // Choose random numbers until you get a different number than last time
-    int x = lastIndex;
+    NSUInteger x = lastIndex;
     while (x == lastIndex) {
         x = random() % [letters count];
     }

@@ -119,7 +119,7 @@
 #pragma mark Rollover methods
 // Ref Hillegass pg 274
 - (void)viewDidMoveToWindow {
-    int options = NSTrackingMouseEnteredAndExited |
+    NSInteger options = NSTrackingMouseEnteredAndExited |
     NSTrackingActiveAlways |
     NSTrackingInVisibleRect;
     NSTrackingArea *ta;
